@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 st.set_page_config(page_title="Prediction SHAP Visualization", layout="wide")
 
 # Title
-st.title("Prediction Model - SHAP Visualization")
+st.title("SuperTMB Prediction Model - SHAP Visualization")
 
 # Load and prepare background data
 @st.cache_data
@@ -31,26 +31,26 @@ model = load_model()
 
 # Default values for the 5 genes (example values, adjust based on your data)
 default_values = {
-    'TMB': 4.893598488,
-    'TP53': 0,
-    'TERT': 0,
-    'PIK3CA': 1,
-    'FAT1': 0,
-    'KMT2D': 0,
-    'NOTCH1': 0,
-    'CDKN2A': 0,
-    'KMT2C': 0,
-    'ARID1A': 0,
-    'EP300': 1,
-    'NFE2L2': 0,
-    'CASP8': 0,
-    'ATRX': 0,
-    'NSD1': 0,
-    'SPEN': 0
+    'TMB': 4.89,
+    'TP53': 0.00,
+    'TERT': 0.00,
+    'PIK3CA': 1.00,
+    'FAT1': 0.00,
+    'KMT2D': 0.00,
+    'NOTCH1': 0.00,
+    'CDKN2A': 0.00,
+    'KMT2C': 0.00,
+    'ARID1A': 0.00,
+    'EP300': 1.00,
+    'NFE2L2': 0.00,
+    'CASP8': 0.00,
+    'ATRX': 0.00,
+    'NSD1': 0.00,
+    'SPEN': 0.00
 }
 
 # Create input form in sidebar
-st.sidebar.header("Gene Expression Inputs")
+st.sidebar.header("Inputs")
 
 # Add reset button
 if st.sidebar.button("Reset to Default Values"):
@@ -87,7 +87,7 @@ if st.button("Calculate SHAP Values"):
     # Get model prediction
     prediction = model.predict(input_df.values)
     st.header("Model Prediction")
-    st.write(f"Immunotherapy Response Prediction Value: {prediction[0][0]:.4f}")
+    st.write(f"OS Status Prediction Value: {prediction[0][0]:.4f}")
     
     # Calculate SHAP values using DeepExplainer
     explainer = shap.DeepExplainer(model, background_processed.values)
