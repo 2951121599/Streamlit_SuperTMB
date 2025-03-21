@@ -63,10 +63,10 @@ gene_values = {}
 for gene in gene_features:
     gene_values[gene] = st.sidebar.number_input(
         gene,
-        min_value=float(background_data[gene].min()),
-        max_value=float(background_data[gene].max()),
+        min_value=float(0.00),
+        max_value=float(1000.00),
         value=default_values[gene],
-        step=0.01,
+        step=1.00,
         format="%.2f",
         key=gene
     )
